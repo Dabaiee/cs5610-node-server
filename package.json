@@ -1,0 +1,30 @@
+{
+  "type": "module",
+  "name": "cs5610-node-server-app",
+  "version": "1.0.0",
+  "description": "Node.js server for gameDB app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dabaiee/cs5610-node-server-app.git"
+  },
+  "keywords": [
+    "Node",
+    "REST",
+    "server",
+    "http"
+  ],
+  "author": "TongZhou, HaoJin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dabaiee/cs5610-node-server-app/issues"
+  },
+  "homepage": "https://github.com/Dabaiee/cs5610-node-server-app#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
