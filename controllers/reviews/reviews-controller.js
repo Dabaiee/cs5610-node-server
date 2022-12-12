@@ -12,6 +12,6 @@ const createReview = async (req, res) => {
 }
 
 export default (app) => {
-    app.get('/api/reviews', findReviews);
+    app.get('/api/reviews/:gid', findReviews);
     app.post('/api/reviews', createReview);
 }
