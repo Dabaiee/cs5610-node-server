@@ -1,7 +1,8 @@
 import * as reviewsDao from './reviews-dao.js'
 
 const findReviews = async (req, res) => {
-    const reviews = await reviewsDao.findReviews();
+    const reviewsFindById = req.params.gid;
+    const reviews = await reviewsDao.findReviews(reviewsFindById);
     res.json(reviews);
 }
 
@@ -11,7 +12,14 @@ const createReview = async (req, res) => {
     res.json(insertedReview);
 }
 
+const deleteReview = async (req, res) => {
+    const reviewIdToDelete = req.params.rid;
+    const status = await reviewsDao.deleteReview(reviewIdToDelete);
+    res.json(status);
+}
+
 export default (app) => {
     app.get('/api/reviews/:gid', findReviews);
     app.post('/api/reviews', createReview);
+    app.delete('/api/reviews/:rid', deleteReview);
 }
