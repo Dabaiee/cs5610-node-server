@@ -22,13 +22,15 @@ const GroupController = (app) => {
     // }
     const findJoined = async (req, res) => {
         const user = req.params.uid
-        const Joined = await dao.findJoined(user)
+        const game = req.params.gid
+        const Joined = await dao.findJoined(user, game)
         res.json(Joined)
     }
 
     app.get('/group', findAllGroups)
     app.post('/group/:uid/:gid', joinGroup)
-    app.get('/users/:uid', findJoined)
+    app.get('/group/:uid/:gid', findJoined)
+    app.get('/group/:uid', findJoined)
     // app.get('/users/:follower/following', findFollowing)
 }
 

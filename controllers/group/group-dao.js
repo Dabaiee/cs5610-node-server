@@ -7,10 +7,9 @@ export const findAllGroups = async () =>
 export const joinGroup = (join) =>
     groupModel.create(join)
 
-export const findJoined = (user) =>
-    groupModel.find({user})
-        .populate('joined')
-        .exec()
+export const findJoined = async (user, game) =>
+    await groupModel.exists({user:user, joined:game})
+
 
 // export const findFollowing = (follower) =>
 //     followsModel.find({follower})
