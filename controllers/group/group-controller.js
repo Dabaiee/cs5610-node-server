@@ -9,10 +9,14 @@ const GroupController = (app) => {
     const joinGroup = async (req, res) => {
         const user = req.params.uid
         const game = req.params.gid
-        const actualJoin = await dao.joinGroup({
+        const name = req.body.name
+        const toJoin = {
             user: user,
-            joined: game
-        })
+            joined: game,
+            gameName: name
+        }
+        console.log(toJoin)
+        const actualJoin = await dao.joinGroup(toJoin)
         res.json(actualJoin)
     }
     // const findFollowers = async (req, res) => {
@@ -20,16 +24,21 @@ const GroupController = (app) => {
     //     const followers = await dao.findFollowers(followed)
     //     res.json(followers)
     // }
-    const findJoined = async (req, res) => {
+    const checkJoined = async (req, res) => {
         const user = req.params.uid
         const game = req.params.gid
-        const Joined = await dao.findJoined(user, game)
+        const Joined = await dao.checkJoined(user, game)
+        res.json(Joined)
+    }
+    const findJoined = async (req, res) => {
+        const user = req.params.uid
+        const Joined = await dao.findJoined(user)
         res.json(Joined)
     }
 
     app.get('/group', findAllGroups)
     app.post('/group/:uid/:gid', joinGroup)
-    app.get('/group/:uid/:gid', findJoined)
+    app.get('/group/:uid/:gid', checkJoined)
     app.get('/group/:uid', findJoined)
     // app.get('/users/:follower/following', findFollowing)
 }
