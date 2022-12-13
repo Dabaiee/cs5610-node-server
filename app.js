@@ -7,8 +7,9 @@ import GamesController from "./controllers/games/games-controller.js";
 import ReviewsController from "./controllers/reviews/reviews-controller.js";
 import UsersController from "./controllers/users/users-controller.js";
 import mongoose from "mongoose";
-const CONNECTION_STRING = 'mongodb://localhost:27017/tuiter'
-// const CONNECTION_STRING =    'mongodb+srv://admin:123045@cluster0.tme0phk.mongodb.net/?retryWrites=true&w=majority'
+import GroupController from "./controllers/group/group-controller.js";
+// const CONNECTION_STRING = 'mongodb://localhost:27017/tuiter'
+const CONNECTION_STRING =    'mongodb+srv://admin:123045@cluster0.tme0phk.mongodb.net/?retryWrites=true&w=majority'
 mongoose.connect(CONNECTION_STRING, (err) => {
     // if (err) throw err;
     console.log("MongoDB connected!")
@@ -30,6 +31,7 @@ GamesController(app)
 ReviewsController(app)
 UsersController(app)
 SessionController(app)
+GroupController(app)
 app.get('/', (req, res) => {res.send('Welcome to Full Stack Development!')})
 
 app.listen(process.env.PORT || 4000);
